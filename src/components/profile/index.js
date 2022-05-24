@@ -31,7 +31,7 @@ const Profile = () => {
         try {
                 let user = await authService.profile();
                 setCurrentUser(user);
-                if(username!==user.username){
+                if(username&&username!==user.username){
                     user = await authService.findUser(username);
                 }else{
                     user = await authService.findUser(username);

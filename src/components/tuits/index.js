@@ -18,6 +18,7 @@ const Tuits = ({tuits = [], refreshTuits}) => {
                 setProfile(user);
             }
         } catch (e) {
+            navigate('/login');
         }
     }, []);
 

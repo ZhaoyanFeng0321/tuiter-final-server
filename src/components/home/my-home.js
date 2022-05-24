@@ -5,6 +5,7 @@ import * as authService from "../../services/auth-service";
 import {useEffect, useState} from "react";
 import {Button, Modal} from 'react-bootstrap';
 import "./home.css"
+import {useNavigate} from "react-router-dom";
 
 const MyHome = () => {
     const [show, setShow] = useState(false);
@@ -17,21 +18,26 @@ const MyHome = () => {
 
     const [tuits, setTuits] = useState([]);
     const [tuit, setTuit] = useState('');
-    const [profile,setProfile] = useState('');
+    const [profile, setProfile] = useState('');
     const [images, setImages] = useState([]);
     const [fileUrl, setFileUrl] = useState([]);
+    const navigate = useNavigate();
 
     const findTuits = () =>
         tuitService.findTuitsByFollow(profile._id)
             .then(tuits => setTuits(tuits));
 
     useEffect(async () => {
-        let isMounted = true;
-        let profile = await authService.profile();
-        setProfile(profile);
-        findTuits();
-        return () => {
-            isMounted = false;
+        try {
+            let isMounted = true;
+            let profile = await authService.profile();
+            setProfile(profile);
+            findTuits();
+            return () => {
+                isMounted = false;
+            }
+        } catch (e) {
+            navigate('/login');
         }
     }, []);
 
@@ -51,7 +57,8 @@ const MyHome = () => {
             }
         }
         tuitService.createTuit('my', {newtuit})
-            .then(findTuits)}
+            .then(findTuits)
+    }
 
     const imageData = (file) => {
         return new Promise((resolve, reject) => {
@@ -73,7 +80,8 @@ const MyHome = () => {
         // setFileUrl((arr) => [...arr, imageUrl]);
         setImages((arr) =>
                       [...arr, img]
-        )}
+        )
+    }
 
     const getPreview = async (event) => {
         const file = event.target.value
@@ -97,30 +105,35 @@ const MyHome = () => {
                 <div className="d-flex">
                     <div className="p-2">
                         <img className="ttr-width-50px rounded-circle"
-                             src={`${profile.profilePhoto}`} />
+                             src={`${profile.profilePhoto}`}/>
                     </div>
                     <div className="p-2 w-100">
                         <textarea className="w-100"
                                   placeholder="What's Happening?"
                                   onChange={(e) =>
                                       setTuit({
-                                                     ...tuit,
-                                                     tuit: e.target.value
-                                                 })}>
+                                                  ...tuit,
+                                                  tuit: e.target.value
+                                              })}>
                     </textarea>
                         {
                             images.length > 0 &&
                             images.map((image, nth) =>
-                                           <span className={"badge position-relative"}><div className={"preview"}>
-                                 <span key={nth} className={"badge bg-secondary me-3 position-relative"}>
+                                           <span className={"badge position-relative"}><div
+                                               className={"preview"}>
+                                 <span key={nth}
+                                       className={"badge bg-secondary me-3 position-relative"}>
                                      {image.name}
-                                     <div className={"preview-1"}><img src={image} className="tt-images mt-2 w-100 ttr-rounded-15px" width={10} height={10}/></div>
+                                     <div className={"preview-1"}><img src={image}
+                                                                       className="tt-images mt-2 w-100 ttr-rounded-15px"
+                                                                       width={10}
+                                                                       height={10}/></div>
                                      <span
                                          className={"position-absolute top-0 start-100 badge rounded-pill bg-dark"}
                                          onClick={() => deleteImage(image)}>
                                         <i className={"fa-solid fa-xmark"}/>
                                     </span>
-                                 </span> </div></span> )
+                                 </span> </div></span>)
                         }
                         <div className="row">
 
@@ -140,7 +153,9 @@ const MyHome = () => {
                                         <input className="w-100"
                                                placeholder="Enter link"
                                                onChange={e => getPreview(e)}/>
-                                        <input type="file" name="myImage" accept="image/gif,image/jpeg,image/jpg,image/png" multiple
+                                        <input type="file" name="myImage"
+                                               accept="image/gif,image/jpeg,image/jpg,image/png"
+                                               multiple
                                                onChange={e => handleFileRead(e)}/>
                                     </Modal.Body>
                                     <Modal.Footer>
@@ -171,9 +186,9 @@ const MyHome = () => {
                                                placeholder="Embed video link"
                                                onChange={(e) =>
                                                    setTuit({
-                                                                  ...tuit,
-                                                                  youtube: e.target.value
-                                                              })}/>
+                                                               ...tuit,
+                                                               youtube: e.target.value
+                                                           })}/>
                                     </Modal.Body>
                                     <Modal.Footer>
                                         <Button variant="secondary" onClick={() => {
