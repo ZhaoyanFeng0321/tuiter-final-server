@@ -20,49 +20,51 @@ import Followers from "../profile/followers";
 import WhoToFollowList from "../whotofollowlist";
 import MyHome from "../home/my-home";
 
-function Tuiter () {
+function Tuiter() {
 
-
-  return(
-    <BrowserRouter>
-      <div className="container">
-        <div className="ttr-tuiter">
-          <div className="ttr-left-column">
-            <Navigation/>
-          </div>
-          <div className="ttr-center-column">
-            <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/signup" element={<Signup/>}/>
-              <Route path="/tuiter" element={<Home/>}/>
-              <Route path="/tuiter/:uid" element={<Home/>}/>
-              <Route path="/home" element={<MyHome/>}/>
-              <Route path="/home/:uid" element={<MyHome/>}/>
-              <Route path="/explore" element={<Explore/>}/>
-              <Route path="/notifications" element={<Notifications/>}/>
-              <Route path="/messages" element={<Messages/>}/>
-              <Route path="/bookmarks" element={<Bookmarks/>}/>
-              <Route path="/lists" element={<Lists/>}/>
-              <Route path="/profile" element={<Profile/>}/>
-              <Route path="/profile/:username/edit" element={<EditProfile/>}/>
-              <Route path="/profile/:username" element={<Profile/>}/>
-              <Route path="/profile/:username/following" element={<Following/>}/>
-              <Route path="/profile/:username/followers" element={<Followers/>}/>
-              <Route path="/profile/:username/*" element={<Profile />}/>
-
-              <Route path="/more" element={<More/>}/>
-            </Routes>
-          </div>
-          <div className="ttr-right-column">
-            <WhatsHappening/>
-            <div className="d-sm-none d-md-none d-lg-block col-lg-4 col-xl-4 col-xxl-3">
-              <WhoToFollowList/>
+    return (
+        <BrowserRouter>
+            <div className="container">
+                <div className="ttr-tuiter">
+                    <div className="ttr-left-column">
+                        <Navigation/>
+                    </div>
+                    <div className="ttr-center-column">
+                        <Routes>
+                            <Route index element={<Home/>}/>
+                            <Route path="login" element={<Login/>}/>
+                            <Route path="signup" element={<Signup/>}/>
+                            <Route path="tuiter" element={<Home/>}>
+                                <Route path=":uid" element={<Home/>}/>
+                            </Route>
+                            <Route path="home" element={<MyHome/>}>
+                                <Route path=":uid" element={<MyHome/>}/></Route>
+                            <Route path="explore" element={<Explore/>}/>
+                            <Route path="notifications" element={<Notifications/>}/>
+                            <Route path="messages" element={<Messages/>}/>
+                            <Route path="bookmarks" element={<Bookmarks/>}/>
+                            <Route path="lists" element={<Lists/>}/>
+                            <Route path="profile" element={<Profile/>}>
+                                <Route path=":username" element={<Profile/>}>
+                                    <Route path="edit" element={<EditProfile/>}/>
+                                    <Route path="following" element={<Following/>}/>
+                                    <Route path="followers" element={<Followers/>}/>
+                                    <Route path="*" element={<Profile/>}/>
+                                </Route>
+                            </Route>
+                            <Route path="more" element={<More/>}/>
+                        </Routes>
+                    </div>
+                    <div className="ttr-right-column">
+                        <WhatsHappening/>
+                        <div className="d-sm-none d-md-none d-lg-block col-lg-4 col-xl-4 col-xxl-3">
+                            <WhoToFollowList/>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </BrowserRouter>
-  );
+        </BrowserRouter>
+    );
 }
+
 export default Tuiter;
