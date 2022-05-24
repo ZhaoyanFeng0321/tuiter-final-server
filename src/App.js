@@ -17,9 +17,6 @@ import EditProfile from "./components/profile/edit-profile";
 import Following from "./components/profile/following";
 import Followers from "./components/profile/followers";
 import More from "./components/more";
-import MyTuits from "./components/profile/my-tuits";
-import MyLikes from "./components/profile/my-likes";
-import MyMedias from "./components/profile/my-medias";
 
 function App() {
     return (
