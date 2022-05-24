@@ -22,36 +22,38 @@ import WhatsHappening from "./components/whats-happening";
 import WhoToFollowList from "./components/whotofollowlist";
 
 function App() {
-  return (
-      <BrowserRouter>
-              <Routes>
-                <Route element={{Tuiter}}/>
-                <Route index element={<Home/>}/>
-                <Route path="login" element={<Login/>}/>
-                <Route path="signup" element={<Signup/>}/>
-                <Route path="tuiter" element={<Home/>}>
-                  <Route path=":uid" element={<Home/>}/>
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Tuiter/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="login" element={<Login/>}/>
+                    <Route path="signup" element={<Signup/>}/>
+                    <Route path="tuiter" element={<Home/>}>
+                        <Route path=":uid" element={<Home/>}/>
+                    </Route>
+                    <Route path="home" element={<MyHome/>}>
+                        <Route path=":uid" element={<MyHome/>}/></Route>
+                    <Route path="explore" element={<Explore/>}/>
+                    <Route path="notifications" element={<Notifications/>}/>
+                    <Route path="messages" element={<Messages/>}/>
+                    <Route path="bookmarks" element={<Bookmarks/>}/>
+                    <Route path="lists" element={<Lists/>}/>
+                    <Route path="profile" element={<Profile/>}>
+                        <Route path=":username" element={<Profile/>}>
+                            <Route path="edit" element={<EditProfile/>}/>
+                            <Route path="following" element={<Following/>}/>
+                            <Route path="followers" element={<Followers/>}/>
+                            <Route path="*" element={<Profile/>}/>
+                        </Route>
+                    </Route>
+                    <Route path="more" element={<More/>}/>
                 </Route>
-                <Route path="home" element={<MyHome/>}>
-                  <Route path=":uid" element={<MyHome/>}/></Route>
-                <Route path="explore" element={<Explore/>}/>
-                <Route path="notifications" element={<Notifications/>}/>
-                <Route path="messages" element={<Messages/>}/>
-                <Route path="bookmarks" element={<Bookmarks/>}/>
-                <Route path="lists" element={<Lists/>}/>
-                <Route path="profile" element={<Profile/>}>
-                  <Route path=":username" element={<Profile/>}>
-                    <Route path="edit" element={<EditProfile/>}/>
-                    <Route path="following" element={<Following/>}/>
-                    <Route path="followers" element={<Followers/>}/>
-                    <Route path="*" element={<Profile/>}/>
-                  </Route>
-                </Route>
-                <Route path="more" element={<More/>}/>
-              </Routes>
 
-      </BrowserRouter>
-  );
+            </Routes>
+
+        </BrowserRouter>
+    );
 }
 
 export default App;
