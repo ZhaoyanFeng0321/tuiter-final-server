@@ -46,6 +46,7 @@ function App() {
                             <Route path="followers" element={<Followers/>}/>
                             <Route path="mytuits" element={<Profile/>}/>
                             <Route path="mylikes" element={<Profile/>}/>
+                            <Route path="mydislikes" element={<Profile/>}/>
                             <Route path="mymedias" element={<Profile/>}/>
 
                         </Route>

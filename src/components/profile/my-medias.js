@@ -11,9 +11,9 @@ import {useParams} from "react-router-dom";
  * User need to login first before use this page
  * @returns {JSX.Element}
  */
-const MyMedias = ({username}) => {
+const MyMedias = () => {
 
-    //const {username} = useParams();
+    const {username} = useParams();
     const [mediaTuits, setMediaTuis] = useState([]);
     const findMediasIHave = () =>
         service.findAllTuitsHaveMediasByUser(username)
