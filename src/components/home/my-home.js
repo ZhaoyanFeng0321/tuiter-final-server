@@ -52,7 +52,7 @@ const MyHome = () => {
         }
         tuitService.createTuit('my', {newtuit})
             .then(findTuits)}
-    
+
     const imageData = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
