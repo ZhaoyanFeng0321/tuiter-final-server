@@ -168,10 +168,10 @@ const Profile = () => {
                 </div>
             </div>
             <Routes>
-                <Route path="/mytuits" element={<MyTuits username={profile.username}/>}/>
-                <Route path="/mylikes" element={<MyLikes username={profile.username}/>}/>
-                <Route path="/mydislikes" element={<MyDislikes username={profile.username}/>}/>
-                <Route path="/mymedias" element={<MyMedia username={profile.username}/>}/>
+                <Route path="mytuits" element={<MyTuits username={profile.username}/>}/>
+                <Route path="mylikes" element={<MyLikes username={profile.username}/>}/>
+                <Route path="mydislikes" element={<MyDislikes username={profile.username}/>}/>
+                <Route path="mymedias" element={<MyMedia username={profile.username}/>}/>
             </Routes>
         </div>
     );
