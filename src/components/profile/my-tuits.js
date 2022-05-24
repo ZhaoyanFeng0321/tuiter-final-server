@@ -3,9 +3,9 @@ import * as service from "../../services/tuits-service";
 import Tuits from "../tuits/index";
 import {useParams} from "react-router-dom";
 
-const MyTuits = () => {
+const MyTuits = ({username}) => {
 
-  const {username} = useParams();
+  //const {username} = useParams();
 
   const [tuits, setTuits] = useState([]);
   const findMyTuits = () =>

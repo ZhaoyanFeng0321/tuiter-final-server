@@ -12,9 +12,9 @@ import {useParams} from "react-router-dom";
  * @returns {JSX.Element}
  */
 
-const MyDislikes = () => {
+const MyDislikes = ({username}) => {
 
-    const {username} = useParams();
+    //const {username} = useParams();
 
     const [dislikedTuits, setDislikedTuis] = useState([]);
     const findTuitsIDislike = () =>
