@@ -3,9 +3,8 @@ import './styles.css';
 
 import Tuiter from "./components/tuiter";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Navigation from "./components/navigation";
 import Home from "./components/home";
-import {Login} from "./components/profile/login";
+import Login from "./components/profile/login";
 import Signup from "./components/profile/signup";
 import MyHome from "./components/home/my-home";
 import Explore from "./components/explore";
@@ -18,8 +17,9 @@ import EditProfile from "./components/profile/edit-profile";
 import Following from "./components/profile/following";
 import Followers from "./components/profile/followers";
 import More from "./components/more";
-import WhatsHappening from "./components/whats-happening";
-import WhoToFollowList from "./components/whotofollowlist";
+import MyTuits from "./components/profile/my-tuits";
+import MyLikes from "./components/profile/my-likes";
+import MyMedias from "./components/profile/my-medias";
 
 function App() {
     return (
@@ -44,7 +44,10 @@ function App() {
                             <Route path="edit" element={<EditProfile/>}/>
                             <Route path="following" element={<Following/>}/>
                             <Route path="followers" element={<Followers/>}/>
-                            <Route path="*" element={<Profile/>}/>
+                            <Route path="mytuits" element={<MyTuits/>}/>
+                            <Route path="mylikes" element={<MyLikes/>}/>
+                            <Route path="mymedias" element={<MyMedias/>}/>
+
                         </Route>
                     </Route>
                     <Route path="more" element={<More/>}/>
