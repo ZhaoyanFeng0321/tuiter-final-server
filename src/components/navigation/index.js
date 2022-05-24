@@ -12,9 +12,9 @@ function Navigation() {
       const user =  await service.profile();
       setProfile(user);
     } catch (e) {
-      navigate(`/signup`);
+      //navigate(`/signup`);
     }
-  }, [pathname]);
+  }, []);
 
   //console.log("loading laoding ");
   const links = [
