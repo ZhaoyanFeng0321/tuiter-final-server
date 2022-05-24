@@ -1,9 +1,20 @@
 import React, {useEffect, useState} from "react";
 import "./navigation.css";
 import {useLocation, Link, useNavigate} from "react-router-dom";
+import * as service from "../../services/auth-service";
 
 function Navigation() {
   const {pathname} = useLocation();
+  //const navigate = useNavigate();
+  //const [profile, setProfile] = useState({});
+  // useEffect(async () => {
+  //   try {
+  //     const user =  await service.profile();
+  //     setProfile(user);
+  //   } catch (e) {
+  //     navigate(`/signup`);
+  //   }
+  // }, []);
 
   //console.log("loading laoding ");
   const links = [
